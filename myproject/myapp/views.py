@@ -16,4 +16,5 @@ def maincanteen(request):
 
 def misccanteen(request):
     return render(request,'misccanteen.html')
-
+def signup(request):
+    return render(request,'signup.html')

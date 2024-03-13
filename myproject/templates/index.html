@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
+{% load static %}
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KGH-Bites</title>
     <link rel="icon" href="{% static 'image/kglogo.jpg' %}">
+
     <link rel="stylesheet" href="{% static 'style.css' %}">
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -16,6 +21,7 @@
     <header class="fade-up" id="home">
         <div class="logo-container">
             <img src="{% static 'image/team-project_image-removebg-preview.png' %}" alt="logo">
+
         </div>
         <ul>
             <li>
@@ -28,9 +34,8 @@
                 <a href="#contact">Contact</a>
             </li>
             <li>
-                <a href="{% url 'login' %}">Login</a>
+                <a href="{% url 'login' %} ">Login</a>
             </li>
-            
         </ul>
     </header>
     <!-- navigation bar end  -->
@@ -41,7 +46,7 @@
             <div class="main-canteen fade-up">
                 <div class="shadow-effect">
                     <h1 class="main-canteen-heading">Main canteen</h1>
-                    <a href="main-canteen.html">
+                    <a href="{% url 'maincanteen' %}">
                         <div class="getin-btn">
                             Order now
                         </div>
@@ -52,7 +57,7 @@
             <div class="misc-canteen fade-up">
                 <div class="shadow-effect">
                     <h1 class="misc-canteen-heading">Misc canteen</h1>
-                    <a href="#">
+                    <a href="{% url 'misccanteen' %}">
                         <div class="getin-btn">
                             Order now
                         </div>
@@ -90,33 +95,33 @@
     <section id="about">
         <div class="about-container">
             <div class="about-img" data-aos="zoom-in-right">
-                <img src="{% static 'image/kghospital_img.png' %}" alt="kg hospital">
+                <img src="{% static 'image/kghospital img.jpg' %}" alt="kg hospital">
             </div>
             <div class="about-content" data-aos="zoom-in-left">
                 <p>
-                    <h1>Welcome to KGH Bytes - Your Ultimate Online Dining and Healthcare Experience</h1>
+                <h1>Welcome to KGH Bytes - Your Ultimate Online Dining and Healthcare Experience</h1>
 
-                    At KGH Bytes, we're dedicated to providing you with delicious meals, snacks, and essential
-                    healthcare items conveniently delivered within the college and hospital campuses. With a focus on
-                    fueling both your academic pursuits and your well-being, we strive to be your go-to destination for
-                    culinary excellence and healthcare solutions on campus.
+                At KGH Bytes, we're dedicated to providing you with delicious meals, snacks, and essential
+                healthcare items conveniently delivered within the college and hospital campuses. With a focus on
+                fueling both your academic pursuits and your well-being, we strive to be your go-to destination for
+                culinary excellence and healthcare solutions on campus.
 
-                    We prioritize sourcing the freshest ingredients and crafting a diverse menu to suit various dietary
-                    preferences, including vegetarian and non-vegetarian options, ensuring there's something for
-                    everyone. Whether you're a busy student at the college or a healthcare professional at the hospital,
-                    KGH Bytes is here to satisfy your cravings and provide essential items to keep you fueled and
-                    focused.
+                We prioritize sourcing the freshest ingredients and crafting a diverse menu to suit various dietary
+                preferences, including vegetarian and non-vegetarian options, ensuring there's something for
+                everyone. Whether you're a busy student at the college or a healthcare professional at the hospital,
+                KGH Bytes is here to satisfy your cravings and provide essential items to keep you fueled and
+                focused.
 
-                    Our online platform also features a comprehensive pharmacy section, offering a wide range of
-                    healthcare products and medications available for delivery within the college and hospital campuses.
-                    From over-the-counter remedies to prescription medications, our online pharmacy provides easy access
-                    to essential healthcare items, all conveniently delivered to your location inside the campus.
+                Our online platform also features a comprehensive pharmacy section, offering a wide range of
+                healthcare products and medications available for delivery within the college and hospital campuses.
+                From over-the-counter remedies to prescription medications, our online pharmacy provides easy access
+                to essential healthcare items, all conveniently delivered to your location inside the campus.
 
-                    With convenient payment options including cash on delivery and secure online transactions, ordering
-                    your favorite meals and healthcare products is simple and stress-free. Our commitment is to provide
-                    students, healthcare professionals, and the community with flavorful meals, essential healthcare
-                    items, and unparalleled convenience throughout their journey with KGH Bytes. Thank you for choosing
-                    us as your culinary and healthcare partner on campus and in the hospital!
+                With convenient payment options including cash on delivery and secure online transactions, ordering
+                your favorite meals and healthcare products is simple and stress-free. Our commitment is to provide
+                students, healthcare professionals, and the community with flavorful meals, essential healthcare
+                items, and unparalleled convenience throughout their journey with KGH Bytes. Thank you for choosing
+                us as your culinary and healthcare partner on campus and in the hospital!
                 </p>
             </div>
         </div>
@@ -124,7 +129,7 @@
     <!-- about content page end -->
 
     <!-- contact page start -->
-    <section id="contact">
+    <section id="contact" data-aos="fade-up" data-aos-duration="1500">
         <h1>Contact us</h1>
         <div class="contact-content">
             <div class="address">
@@ -151,10 +156,9 @@
     </section>
     <!-- contact page end-->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-    AOS.init();
-</script>
-
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>

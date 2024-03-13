@@ -34,10 +34,3 @@ function buttonRemove(e){
     e.currentTarget.parentNode.remove();
 }
 
-
-function qtychange(i){
-    if(isNaN(i.value) || i.value < 1){
-        i.value=1;
-    }
-}
-

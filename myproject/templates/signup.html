@@ -1,38 +1,41 @@
-{%load static%}
 <!DOCTYPE html>
 <html lang="en">
-
+{%load static%}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | KGH-Bites</title>
+    <title>Signup | KGH-Bites</title>
     <link rel="icon" href="{% static 'image/kglogo.jpg' %}">
-    <link rel="stylesheet" href="{% static 'loginstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'signupstyle.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
 
-<body>
+<body>  
     <header>
         <div class="logo-container">
             <img src="{% static 'image/team-project_image-removebg-preview.png' %}" alt="logo">
         </div>
         <a href="{% url 'index' %}">
             <div class="back">Back</div>
-        </a>
+        </a>    
     </header>
 
     <section>
         <div class="container">
             <form name="login">
                 <div class="heading">
-                    <h1>Log In</h1>
+                    <h1>Sign up</h1>
                 </div>
                 <div class="input-box">
                     <i class="fa-solid fa-user"></i>
                     <input type="text" placeholder="Username">
+                </div>
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="text" placeholder="Email">
                 </div>
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
@@ -58,9 +61,9 @@
             </form>
             <div class="signup">
                 <div class="text-content">
-                   <span><h1>Welcome back, to KGH-Bites....!</h1>
+                   <span><h1>Welcome to KGH-Bites....!</h1>
                     <p>If you don't have an account just </p></span> 
-                    <a href="{% url 'signup' %}"><button class="sign-up">Sign up</button></a>
+                    <a href="{% url 'login' %}"><button class="sign-up">Login</button></a>
                 </div>
             </div>
         </div>

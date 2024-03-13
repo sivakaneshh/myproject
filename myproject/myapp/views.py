@@ -8,35 +8,13 @@ from .forms import UserSignupForm
 def index(request):
     return render(request, 'index.html')
 
-# myapp/views.py
+def login(request):
+    return render(request, 'login.html')
 
+def maincanteen(request):
+    return render(request,'maincanteen.html')
 
-User = get_user_model()
-
-def login_view(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                return redirect('index')  # Redirect to your desired page after login
-    else:
-        form = AuthenticationForm()
-
-    return render(request, 'login.html', {'form': form})
-
-def signup_view(request):
-    if request.method == 'POST':
-        form = UserSignupForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('index')  # Redirect to your desired page after signup
-    else:
-        form = UserSignupForm()
-
-    return render(request, 'login.html', {'form': form})
-
-
+def misccanteen(request):
+    return render(request,'misccanteen.html')
+def signup(request):
+    return render(request,'signup.html')

@@ -78,13 +78,9 @@ WSGI_APPLICATION = 'myproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'foodorder',       # Replace with your preferred database name
-        'USER': 'postgres',   # Replace with your preferred database user
-        'PASSWORD': '12345',   # Replace with your preferred database password
-        'HOST': 'localhost',        # Set to the host where your PostgreSQL server is running
-        'PORT': '5432',             # Set to the port where your PostgreSQL server is running
-    }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        }
 }
 
 

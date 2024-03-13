@@ -5,16 +5,16 @@ from .forms import CreateUserForm
 from django.contrib import messages
 
 def signup(request):
-    form = CreateUserForm()
-    
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
             user = form.cleaned_data.get('username')
-            messages.success(request, 'Account was created: ' + user)
-            return redirect('login')
-    
+            messages.success(request, f'Account was created for {user}')
+            return redirect('login')  # Use the URL pattern name here
+    else:
+        form = CreateUserForm()
+
     context = {'form': form}
     return render(request, 'signup.html', context)
 

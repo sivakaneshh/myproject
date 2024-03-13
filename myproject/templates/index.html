@@ -34,7 +34,18 @@
                 <a href="#contact">Contact</a>
             </li>
             <li>
-                <a href="{% url 'login' %} ">Login</a>
+                {% if user.is_authenticated %}
+            <!-- Show logout button if user is authenticated -->
+            <li>
+                <p>Welcome {{ user.username }}</p>
+                <a href="{% url 'logout' %}">Logout</a>
+            </li>
+        {% else %}
+            <!-- Show login button if user is not authenticated -->
+            <li>
+                <a href="{% url 'login' %}">Login</a>
+            </li>
+        {% endif %}
             </li>
         </ul>
     </header>

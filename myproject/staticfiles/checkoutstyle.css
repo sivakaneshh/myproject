@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"poppins",sans-serif;
+}
+body{
+    overflow-x:hidden;
+}
+header{
+    width:100vw;
+}
+.img-container img{
+    width:400px;
+    height:115px;
+    object-fit: cover;
+}
+section{
+    max-width:100vw;
+    height:85vh;
+}
+::-webkit-scrollbar{
+    width:10px;
+
+}
+::-webkit-scrollbar-thumb{
+    background-color:#3633AD;
+    border-radius:10px;
+
+}
+.container{
+    width:100%;
+    height:100%;
+    display:flex;
+
+}
+.details{
+    height:100%;
+    width:40%;
+    position:relative;
+    padding-top:50px;
+}
+.form{
+    height: 100%;
+    width:60%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center; 
+    border-left:2px solid #3633AD; 
+    margin-left:30px;
+
+}
+h1{
+    font-size:2rem;
+}
+.detail-value{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+
+}
+.detail-value p{
+    margin-top:8px;
+}
+.detail-value span{
+    display:flex;
+    justify-content:space-around;
+    width:150px;
+}
+.total{
+    position:absolute;
+    bottom:20px;
+    right:20px;
+}       
+.patient-details{
+    width:50vw;
+    height:400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.input-field{
+    border:2px solid brown;
+    width:250px;
+    height:35px;
+    border-radius:15px;
+    margin-bottom:40px;
+    display:flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+input{
+    height:100%;
+    width:80%;
+    border:none;
+    outline:none;
+}
+.btn{
+    width:100px;
+    height:45px;
+    border:none;
+    background-color: #3633AD;
+    color:white;
+    border-radius:20px;
+}

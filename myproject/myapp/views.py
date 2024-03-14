@@ -47,3 +47,7 @@ def maincanteen(request):
 
 def misccanteen(request):
     return render(request, 'misccanteen.html')
+def checkout(request):
+    return render(request, 'checkout.html')
+def conformation(request):
+    return render(request,'conformation.html')

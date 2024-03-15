@@ -3,9 +3,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
+from django.contrib.auth.models import User
 
 def signup(request):
     if request.method == 'POST':
@@ -21,22 +19,48 @@ def signup(request):
     context = {'form': form}
     return render(request, 'signup.html', context)
 
+from django.contrib.auth import authenticate, login as auth_login
+from django.shortcuts import render, redirect
+from django.contrib import messages
+
 def user_login(request):
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
         
-        # Query the user by matching the phone number with the email field
+        
+        
+        # Authenticate using phone number instead of username
+        user = authenticate(request, phone_number=phone_number, password=password)
         user = User.objects.filter(email=phone_number).first()
         
-        # Authenticate the user with the provided password
-        if user is not None and user.check_password(password):
+        if user is not None:
             auth_login(request, user)
-            return redirect('home')
+            return redirect('index')
         else:
-            messages.info(request, "Phone number or password is incorrect")  # Update error message
+            messages.info(request, "Phone number or password is incorrect")
             
     return render(request, 'login.html')
+
+def addmin_login(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        
+        user = authenticate(request, email=email, password=password)
+        
+        if user is not None:
+            auth_login(request, user)
+            return redirect('addmin')
+        else:
+            messages.info(request, "email or password is incorrect")
+    return render(request, 'addmin_login.html')
+        
+        
+
+
+
+
 
 def user_logout(request):
     logout(request)
@@ -50,7 +74,18 @@ def maincanteen(request):
 
 def misccanteen(request):
     return render(request, 'misccanteen.html')
+
 def checkout(request):
     return render(request, 'checkout.html')
+
 def conformation(request):
     return render(request,'conformation.html')
+
+def addmin(request):
+    return render(request, 'addmin.html')
+
+def inventory(request):
+    return render(request,'inventory.html')
+
+def additems(request):
+    return render(request,'additems.html')

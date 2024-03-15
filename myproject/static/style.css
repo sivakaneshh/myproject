@@ -205,11 +205,12 @@ a{
     bottom: 20px;
     right: 20px;
     background-color: #007bff;
-    color: #fff;
+    color: white;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
-    font-size: 16px;
+    font-weight: bold;
+    z-index: 999; /* Ensure the button appears above other elements */
 }
 
 .admin-login-btn:hover {

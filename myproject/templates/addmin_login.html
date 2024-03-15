@@ -28,20 +28,20 @@
             <form method="POST" action="">
                 {% csrf_token %}
                 <div class="heading">
-                    <h1>Admin Log In</h1>
+                    <h1>Admin-Log In</h1>
                 </div>
                 <div class="input-box">
-                    <i class="fa-solid fa-envelope"></i> <!-- Change icon to envelope for email -->
-                    <input type="email" name="email" placeholder="Email Address">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="tel" name="phone_number" placeholder="Phone Number" pattern="[0-9]*" title="Please enter only digits">
                 </div>
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
                     <input type="password" name="password" placeholder="Password">
                 </div>
-                <input class="login-btn" type="submit" value="Login">
+                <input class="login-btn" type="submit" value="login">
                 <div class="text">
-                    
             </form>
+
             {% if messages %}
                 <div class="error-message">
                     {% for message in messages %}

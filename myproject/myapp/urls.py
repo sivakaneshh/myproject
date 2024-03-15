@@ -12,5 +12,6 @@ urlpatterns = [
     path('signup.html/', signup, name='signup'),
     path('logout.html/', user_logout, name="logout"),
     path('checkout.html/', checkout, name="checkout"),
-    path('conformation.html',success, name='success')
+    path('conformation.html',conformation, name='conformation'),
+    
 ]

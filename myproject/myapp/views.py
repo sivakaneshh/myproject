@@ -19,22 +19,24 @@ def signup(request):
     context = {'form': form}
     return render(request, 'signup.html', context)
 
+User = get_user_model()
+
 def user_login(request):
-    
     if request.method == 'POST':
-        username = request.POST.get('username')
+        phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
         
-        user = authenticate(request, username=username, password=password)
+        # Query the user by matching the phone number with the email field
+        user = User.objects.filter(email=phone_number).first()
         
-        if user is not None:
+        # Authenticate the user with the provided password
+        if user is not None and user.check_password(password):
             auth_login(request, user)
             return redirect('index')
         else:
-            messages.info(request, "Username or password is incorrect")
+            messages.info(request, "Phone number or password is incorrect")  # Update error message
             
-    context = {}
-    return render(request, 'login.html', context)
+    return render(request, 'login.html')
 
 def user_logout(request):
     logout(request)
@@ -48,7 +50,6 @@ def maincanteen(request):
 
 def misccanteen(request):
     return render(request, 'misccanteen.html')
-
 def checkout(request):
 
     if request.method == "POST":

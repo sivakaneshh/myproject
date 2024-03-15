@@ -36,11 +36,12 @@
                    
                     {{ form.username }}
                 </div>
+
                 <div class="input-box">
-                    <i class="fa-solid fa-envelope"></i>
-                    
-                    {{ form.email }}
+                    <i class="fa-solid fa-phone"></i>
+                    {{ form.phone_number }}
                 </div>
+
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
                     
@@ -88,7 +89,7 @@
 		//Query All input fields
 		var form_fields = document.getElementsByTagName('input')
 		form_fields[1].placeholder='Username';
-		form_fields[2].placeholder='Email';
+		form_fields[2].placeholder='Phone Number';
 		form_fields[3].placeholder='Enter password';
 		form_fields[4].placeholder='Re-enter Password';
 

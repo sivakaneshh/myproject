@@ -86,10 +86,6 @@ DATABASES = {
 }
 
 
-#TWILIO_ACCOUNT_SID = ''
-#TWILIO_AUTH_TOKEN = ''
-#TWILIO_PHONE_NUMBER = ''
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

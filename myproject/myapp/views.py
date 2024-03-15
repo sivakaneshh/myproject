@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from twilio.rest import Client
 from django.shortcuts import render
-from .utils import send_sms_message
+#from .utils import send_sms_message
 
 def signup(request):
     if request.method == 'POST':

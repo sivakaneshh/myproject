@@ -86,6 +86,10 @@ DATABASES = {
 }
 
 
+TWILIO_ACCOUNT_SID = 'ACcc4dc917681af85e18121040176fe5bd'
+TWILIO_AUTH_TOKEN = 'b0903c7a542e6e520887fa184b9f7636'
+TWILIO_PHONE_NUMBER = '+13214419323'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

@@ -4,6 +4,7 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from .models import Order
 from django.contrib import messages
+import razorpay
 from django.contrib.auth.models import User
 
 def signup(request):
@@ -56,12 +57,6 @@ def addmin_login(request):
         else:
             messages.info(request, "email or password is incorrect")
     return render(request, 'addmin_login.html')
-        
-        
-
-
-
-
 
 def user_logout(request):
     logout(request)

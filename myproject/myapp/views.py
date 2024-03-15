@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
+import razorpay
 
 def signup(request):
     if request.method == 'POST':
@@ -49,20 +50,22 @@ def misccanteen(request):
     return render(request, 'misccanteen.html')
 
 def checkout(request):
-    import razorpay
-    client = razorpay.Client(auth=("YOUR_ID", "YOUR_SECRET"))
 
-    DATA = {
-        "amount": 100,
-        "currency": "INR",
-        "receipt": "receipt#1",
-        "notes": {
-            "key1": "value3",
-            "key2": "value2"
+    if request.method == "POST":
+        
+        client = razorpay.Client(auth=("rzp_test_yYvICHDSsLshMz", "5SnWpSWZVmPauDe18shOXt1C"))
+
+        DATA = {
+            "amount": 50000,
+            "currency": "INR",
+            "receipt": "receipt#1",
+            "notes": {
+                "key1": "value3",
+                "key2": "value2"
+            }
         }
-    }
-    client.order.create(data=DATA)
-    
+        payment = client.order.create(data=DATA)
+
     return render(request, 'checkout.html')
 
 def conformation(request):

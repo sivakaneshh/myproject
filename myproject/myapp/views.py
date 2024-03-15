@@ -74,8 +74,6 @@ def maincanteen(request):
 def misccanteen(request):
     return render(request, 'misccanteen.html')
 
-def checkout(request):
-    return render(request, 'checkout.html')
 
 def conformation(request):
     return render(request,'conformation.html')
@@ -88,3 +86,9 @@ def inventory(request):
 
 def additems(request):
     return render(request,'additems.html')
+
+def maincheckout(request):
+    return render(request,maincheckout)
+
+def miscchekout(request):
+    return render(request, 'misccheckout')

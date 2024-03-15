@@ -53,7 +53,7 @@ section{
 
 }
 h1{
-    font-size:2rem;
+    font-size:1rem;
 }
 .detail-value{
     width:100%;
@@ -70,6 +70,7 @@ h1{
     width:150px;
 }
 .total{
+    display: inline-block;
     position:absolute;
     bottom:20px;
     right:20px;
@@ -98,11 +99,19 @@ input{
     border:none;
     outline:none;
 }
-.btn{
+.continue{
     width:100px;
     height:45px;
     border:none;
     background-color: #3633AD;
     color:white;
     border-radius:20px;
+}
+
+
+.btns{
+    display:flex;
+    width:20%; 
+    justify-content:space-around;
+    cursor:pointer;
 }

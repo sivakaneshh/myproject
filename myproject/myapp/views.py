@@ -89,3 +89,9 @@ def inventory(request):
 
 def additems(request):
     return render(request,'additems.html')
+
+def maincheckout(request):
+    return render(request,'maincheckout.html')
+
+def misccheckout(request):
+    return render(request, 'misccheckout.html')

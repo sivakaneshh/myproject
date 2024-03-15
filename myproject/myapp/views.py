@@ -46,9 +46,7 @@ def addmin_login(request):
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
-        
-        
-        
+     
         # Authenticate using phone number instead of username
         user = authenticate(request, phone_number=phone_number, password=password)
         user = User.objects.filter(email=phone_number).first()

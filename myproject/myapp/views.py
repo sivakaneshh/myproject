@@ -5,6 +5,8 @@ from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 
+User = get_user_model()
+
 def signup(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
@@ -19,8 +21,6 @@ def signup(request):
     context = {'form': form}
     return render(request, 'signup.html', context)
 
-User = get_user_model()
-
 def user_login(request):
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
@@ -32,7 +32,7 @@ def user_login(request):
         # Authenticate the user with the provided password
         if user is not None and user.check_password(password):
             auth_login(request, user)
-            return redirect('index')
+            return redirect('home')
         else:
             messages.info(request, "Phone number or password is incorrect")  # Update error message
             
@@ -42,8 +42,8 @@ def user_logout(request):
     logout(request)
     return redirect('login')
     
-def index(request):
-    return render(request, 'index.html')
+def home(request):
+    return render(request, 'home.html')
 
 def maincanteen(request):
     return render(request, 'maincanteen.html')

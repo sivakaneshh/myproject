@@ -23,3 +23,8 @@ class UserProfile(AbstractUser):
     
 UserProfile._meta.get_field('groups').remote_field.related_name = 'user_profiles_groups'
 UserProfile._meta.get_field('user_permissions').remote_field.related_name = 'user_profiles_permissions'
+
+class Order(models.Model):
+    amount = models.CharField(max_length=100)
+    payment_id = models.CharField(max_length=100)
+    paid = models.BooleanField(default = False)

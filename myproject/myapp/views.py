@@ -56,17 +56,19 @@ def checkout(request):
         client = razorpay.Client(auth=("rzp_test_yYvICHDSsLshMz", "5SnWpSWZVmPauDe18shOXt1C"))
 
         DATA = {
-            "amount": 50000,
-            "currency": "INR",
-            "receipt": "receipt#1",
-            "notes": {
-                "key1": "value3",
-                "key2": "value2"
-            }
+            "amount": "50000",
+            "currency": "INR",                 
+            "receipt": "1",
+            'payment_capture':'1'
         }
+        
         payment = client.order.create(data=DATA)
+        print(payment)
 
     return render(request, 'checkout.html')
 
-def conformation(request):
+def success(request):
+    if request.method == "POST":
+        a = request.POST
+        print(request)
     return render(request,'conformation.html')

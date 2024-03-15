@@ -44,16 +44,21 @@ def user_login(request):
 
 def addmin_login(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
+        phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
         
-        user = authenticate(request, email=email, password=password)
+        
+        
+        # Authenticate using phone number instead of username
+        user = authenticate(request, phone_number=phone_number, password=password)
+        user = User.objects.filter(email=phone_number).first()
         
         if user is not None:
             auth_login(request, user)
             return redirect('addmin')
         else:
-            messages.info(request, "email or password is incorrect")
+            messages.info(request, "Phone number or password is incorrect")
+            
     return render(request, 'addmin_login.html')
         
         

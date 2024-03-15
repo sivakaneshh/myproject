@@ -1,7 +1,7 @@
 # myapp/urls.py
 
 from django.urls import path
-from .views import home, user_login,maincanteen,misccanteen,signup,user_logout,checkout,conformation,addmin,inventory,addmin_login,additems,misccheckout,maincheckout
+from .views import home, user_login,maincanteen,misccanteen,signup,user_logout,conformation,addmin,inventory,addmin_login,additems,maincheckout,misccheckout
 
 urlpatterns = [
     path('', home, name='home'),
@@ -15,8 +15,8 @@ urlpatterns = [
     path('inventory.html/',inventory,name='inventory'),
     path('addmin.html/',addmin,name='addmin'),
     path('addmin_login', addmin_login, name="addmin_login"),
-    path('additems', additems, name="additems"),
-    path('maincheckout', maincheckout, name='maincheckout'),
-    path('miscchekout', misccheckout, name='misccheckout')
+    path('additems.html', additems, name="additems"),
+    path('maincheckout.html', maincheckout, name='maincheckout'),
+    path('miscchekout.html', misccheckout, name='misccheckout')
 
 ]

@@ -231,11 +231,11 @@ section{
     font-weight:600;
 }
 .total-price{
-   margin-right:20px; 
+margin-right:20px; 
 }
 .buy-btn{
     position:absolute;
-    bottom:5px;
+    bottom:25px;
     right:0;
     width:200px;
     margin-right:60px;

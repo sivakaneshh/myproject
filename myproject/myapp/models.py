@@ -7,16 +7,15 @@ from django.contrib.auth.models import AbstractUser
 class Item(models.Model):
 
     name = models.CharField(max_length=100, unique=True)
-    price = models.IntegerField()
-    quantity = models.IntegerField()
-    photo = models.FileField()
+    price = models.IntegerField(default = 0)
+    quantity = models.IntegerField(default = 0)
     description = models.TextField()
 
 class UserProfile(AbstractUser):
 
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(unique=True)
-    ph_no = models.IntegerField()
+    ph_no = models.IntegerField(default = 0)
     password = models.CharField(max_length=50)
     
     class Meta:
@@ -32,7 +31,7 @@ UserProfile._meta.get_field('user_permissions').remote_field.related_name = 'use
 class Order(models.Model):
 
     status = models.CharField(max_length=50)
-    transaction = models.CharField()
+    transaction = models.CharField(max_length=50)
     user = models.OneToOneField(UserProfile, on_delete = models.CASCADE)
 
     def get_total(self):
@@ -44,9 +43,9 @@ class Order(models.Model):
 class OrderUnits(models.Model):
 
     quantity = models.IntegerField()
-    name = models.CharField()
+    name = models.CharField(max_length=50)
     price = models.IntegerField()
-    orders = models.ForeignKey(Order)
+    orders = models.ForeignKey(Order, on_delete = models.CASCADE)
     
     def get_price(self):
         return self.price * self.quantity

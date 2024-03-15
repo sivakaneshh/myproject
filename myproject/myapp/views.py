@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login as auth_login, logout
+from django.contrib.auth import authenticate, login as auth_login, logout, get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
+from .models import Order
 from django.contrib import messages
 import razorpay
 
@@ -57,13 +58,14 @@ def checkout(request):
         client = razorpay.Client(auth=("rzp_test_yYvICHDSsLshMz", "5SnWpSWZVmPauDe18shOXt1C"))
 
         DATA = {
-            "amount": "50000",
+            "amount": 50000,
             "currency": "INR",                 
             "receipt": "1",
             'payment_capture':'1'
         }
         
         payment = client.order.create(data=DATA)
+        order = Order(amount = DATA["amount"])
         print(payment)
 
     return render(request, 'checkout.html')

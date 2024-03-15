@@ -60,12 +60,6 @@ def addmin_login(request):
             messages.info(request, "Phone number or password is incorrect")
             
     return render(request, 'addmin_login.html')
-        
-        
-
-
-
-
 
 def user_logout(request):
     logout(request)

@@ -33,7 +33,7 @@
                 </div>
                 <div class="input-box">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" name="username" placeholder="Username">
+                    <input type="number" name="email" placeholder="Phone Number" pattern="[0-9]*" title="Please enter only digits">
                 </div>
                 <div class="input-box">
                     <i class="fa-solid fa-lock"></i>
@@ -59,6 +59,13 @@
                 </div>
                 
             </form>
+            {% if messages %}
+                <div class="error-message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
             <div class="signup">
                 <div class="text-content">
                    <span><h1>Welcome back, to KGH-Bites....!</h1>

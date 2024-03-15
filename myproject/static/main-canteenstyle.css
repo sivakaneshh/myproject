@@ -13,7 +13,7 @@ header{
     justify-content: space-evenly;
     margin-top: 25px;
     position:sticky;
-    top:5px;
+    top:0px;
     background-color: white; 
     z-index: 100;
 }

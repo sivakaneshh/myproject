@@ -22,41 +22,36 @@
     <div class="container">
         <div class="details">
 
-            <div class="detail-value">
+            <!-- <div class="detail-value">
                 <span>
                     <p class="serial-no">1.</p>
                     <h1>Dosa</h1>
                 </span>
-                <h4 class="quantity">
-                    1-qty
-                </h4>
+
                 <div class="price">Rs.20</div>
+            </div> -->
+
+            <!-- <div class="detail-value">
+                <span>
+                    <p class="serial-no">2.</p>
+                    <h1>Biriyani</h1>
+                </span>
+        
+                <div class="price">Rs.50</div>
             </div>
 
             <div class="detail-value">
                 <span>
-                    <p class="serial-no">1.</p>
-                    <h1>Dosa</h1>
+                    <p class="serial-no">3.</p>
+                    <h1>Idly</h1>
                 </span>
-                <h4 class="quantity">
-                    1-qty
-                </h4>
-                <div class="price">Rs.20</div>
-            </div>
-
-            <div class="detail-value">
-                <span>
-                    <p class="serial-no">1.</p>
-                    <h1>Dosa</h1>
-                </span>
-                <h4 class="quantity">
-                    1-qty
-                </h4>
-                <div class="price">Rs.20</div>
-            </div>
+               
+                <div class="price">Rs.10</div>
+            </div> -->
 
             <div class="total">
-                <div class="total-amt">Rs.00</div>
+                Total
+                <div class="total-amt">Rs.80</div>
             </div>
         </div>
         <div class="form">
@@ -76,8 +71,13 @@
                     <i class="fa-solid fa-house"></i>
                     <input type="text" placeholder="Patient room number">
                 </div>
-                <button id="rzp-button1">Pay</button>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                <a href="{% url 'conformation' %}">
+                    <button class="continue">Pay now</button>
+                </a>
+            </form>
+        </div>
+    </div>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
     var options = {
         "key": "rzp_test_yYvICHDSsLshMz", // Enter the Key ID generated from the Dashboard
@@ -107,10 +107,9 @@
     }
 </script>
 
-            </form>
-        </div>
-    </div>
+    <script src="{% static 'checkout.js' %}"></script>
 </section>
+
 
 <body>
 

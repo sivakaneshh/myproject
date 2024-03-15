@@ -4,6 +4,10 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth.models import User
+from django.conf import settings
+from .models import Order
+import razorpay
+from random import randint
 
 def signup(request):
     if request.method == 'POST':
@@ -73,7 +77,22 @@ def misccanteen(request):
     return render(request, 'misccanteen.html')
 
 def main_checkout(request):
-    return render(request, 'maincheckout.html')
+    
+    order = Order()
+    
+    client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET))
+
+    DATA = {
+        "amount": randint(100,500),
+        "currency": "INR",
+        "receipt": "receipt#1",
+        "payment_capture":"1",
+    }
+    payment = client.order.create(data=DATA)
+    order.rp_order_id = payment['id']
+    print(payment)
+    context = {"payment":payment}
+    return render(request, 'maincheckout.html', context)
 
 def misc_checkout(request):
     return render(request, 'misccheckout.html')

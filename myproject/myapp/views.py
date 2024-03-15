@@ -4,24 +4,14 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.conf import settings
-from twilio.rest import Client
-from django.shortcuts import render
-#from .utils import send_sms_message
 
 def signup(request):
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            # Extracting username and phone number from the form
-            username = form.cleaned_data.get('username')
-            phone_number = form.cleaned_data.get('phone_number')
-            # Sending SMS notification
-            message = f"Your account was successfully created in KGH-Bites.\nUsername: {username}\nPhone number: {phone_number}"
-            send_sms_message(phone_number, message)
-            # Displaying success message
-            messages.success(request, f'Account was created for {username}')
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, f'Account was created for {user}')
             return redirect('login')  # Use the URL pattern name here
     else:
         form = CreateUserForm()
@@ -29,6 +19,9 @@ def signup(request):
     context = {'form': form}
     return render(request, 'signup.html', context)
 
+from django.contrib.auth import authenticate, login as auth_login
+from django.shortcuts import render, redirect
+from django.contrib import messages
 
 def user_login(request):
     if request.method == 'POST':
@@ -79,6 +72,12 @@ def maincanteen(request):
 def misccanteen(request):
     return render(request, 'misccanteen.html')
 
+def main_checkout(request):
+    return render(request, 'maincheckout.html')
+
+def misc_checkout(request):
+    return render(request, 'misccheckout.html')
+
 def conformation(request):
     return render(request,'conformation.html')
 
@@ -96,4 +95,3 @@ def maincheckout(request):
 
 def misccheckout(request):
     return render(request, 'misccheckout.html')
-

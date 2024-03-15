@@ -214,6 +214,40 @@
         </div>
     </section>
     <script src="{% static 'admin.js' %}"></script>
+    <script src="{% static 'admin.js' %}"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Add event listener to all "Done" buttons
+        var doneButtons = document.querySelectorAll('.btns');
+        doneButtons.forEach(function (button) {
+            button.addEventListener('click', handleDoneButtonClick);
+        });
+    });
+
+    function handleDoneButtonClick(event) {
+        // Get the parent item-box element of the clicked button
+        var itemBox = event.target.closest('.item-box');
+        // Remove the item-box element from the DOM
+        itemBox.remove();
+        // Check if there are no more item-box elements
+        checkOrders();
+    }
+
+    function checkOrders() {
+        var itemBoxes = document.querySelectorAll('.item-box');
+        if (itemBoxes.length === 0) {
+            var noOrdersMessage = document.createElement('div');
+            noOrdersMessage.textContent = "No orders left.";
+            noOrdersMessage.classList.add('no-orders-message');
+            // Apply black color to the text
+            noOrdersMessage.style.color = "black";
+            // Center the message
+            noOrdersMessage.style.textAlign = "center";
+            document.querySelector('.container').appendChild(noOrdersMessage);
+        }
+    }
+        
+</script>
 </body>
 
 </html>

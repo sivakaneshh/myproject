@@ -52,6 +52,12 @@ section{
     margin-left:30px;
 
 }
+.back{
+    border:1px solid #3633AD;
+    padding:5px 10px; 
+    border-radius:15px;
+    background-color: #3633AD;
+}
 h1{
     font-size:1rem;
 }

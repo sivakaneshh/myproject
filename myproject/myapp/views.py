@@ -10,10 +10,12 @@ from django.contrib.auth.models import User
 from django.conf import settings
 from .models import RazorpayOrder
 import razorpay
+from .utils import send_sms_message
 from random import randint
 
+from django.conf import settings
+
 def signup(request):
-    
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
@@ -22,8 +24,10 @@ def signup(request):
             username = form.cleaned_data.get('username')
             phone_number = form.cleaned_data.get('phone_number')
             # Sending SMS notification
+            sms_phone_number = "+91" + phone_number  # Adding +91 for sending SMS
             message = f"Your account was successfully created in KGH-Bites.\nUsername: {username}\nPhone number: {phone_number}"
-            send_sms_message(phone_number, message)
+            # Sending SMS message using your preferred SMS gateway or service
+            send_sms_message(sms_phone_number, message)
             # Displaying success message
             messages.success(request, f'Account was created for {username}')
             return redirect('login')  # Use the URL pattern name here
@@ -32,6 +36,7 @@ def signup(request):
 
     context = {'form': form}
     return render(request, 'signup.html', context)
+
 
 def user_login(request):
     
@@ -101,7 +106,22 @@ def main_checkout(request):
     return render(request, 'maincheckout.html', context)
 
 def misc_checkout(request):
-    return render(request, 'misccheckout.html')
+    
+    order = RazorpayOrder()
+    
+    client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET))
+
+    DATA = {
+        "amount": randint(100,500),
+        "currency": "INR",
+        "receipt": "receipt#1",
+        "payment_capture":"1",
+    }
+    payment = client.order.create(data=DATA)
+    order.rp_order_id = payment['id']
+    print(payment)
+    context = {"payment":payment}
+    return render(request, 'misccheckout.html', context)
 
 def conformation(request):
     return render(request,'conformation.html')

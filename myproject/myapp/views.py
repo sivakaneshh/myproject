@@ -56,37 +56,6 @@ def main_checkout(request):
     context = {"payment": payment}
     return render(request, 'maincheckout.html', context)
 
-def capture_payment(request):
-    if request.method == 'POST':
-        try:
-            client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET))
-            payment_id = request.POST.get('payment_id')
-            amount = request.POST.get('amount')
-            
-            # Attempt to capture the payment
-            capture = client.payment.capture(payment_id, amount)
-            if capture['status'] == 'captured':
-                # Payment successful
-                return redirect('payment_success')  # Redirect to a success page if needed
-            else:
-                # Payment failed
-                phone_number = request.POST.get('phone_number')  # Get the entered phone number from the form
-                send_payment_failed_sms(phone_number)  # Send payment failure SMS
-                return redirect('payment_failed')  # Redirect to the payment failure page
-        except Exception as e:
-            print(f"Exception occurred during payment capture: {str(e)}")
-            return redirect('payment_failed')  # Redirect to the payment failure page
-    else:
-        # Handle GET request for capture_payment view
-        return redirect('main_checkout')  # Redirect to the main checkout page if accessed via GET
-
-    
-def send_payment_failed_sms(phone_number):
-    try:
-        # Send SMS notification for payment failure to the entered phone number
-        send_sms_message(phone_number, "Payment failed for order. Please check.")
-    except Exception as e:
-        print(f"Failed to send SMS notification for payment failure. Error: {str(e)}")    
 
 
 def user_login(request):

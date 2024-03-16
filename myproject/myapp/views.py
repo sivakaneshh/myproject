@@ -3,13 +3,17 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login as auth_login
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.models import User
 from django.conf import settings
-from .models import Order
+from .models import RazorpayOrder
 import razorpay
 from random import randint
 
 def signup(request):
+    
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
@@ -23,17 +27,12 @@ def signup(request):
     context = {'form': form}
     return render(request, 'signup.html', context)
 
-from django.contrib.auth import authenticate, login as auth_login
-from django.shortcuts import render, redirect
-from django.contrib import messages
-
 def user_login(request):
+    
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
-        
-        
-        
+         
         # Authenticate using phone number instead of username
         user = authenticate(request, phone_number=phone_number, password=password)
         user = User.objects.filter(email=phone_number).first()
@@ -47,6 +46,7 @@ def user_login(request):
     return render(request, 'login.html')
 
 def addmin_login(request):
+    
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
@@ -78,7 +78,7 @@ def misccanteen(request):
 
 def main_checkout(request):
     
-    order = Order()
+    order = RazorpayOrder()
     
     client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET))
 

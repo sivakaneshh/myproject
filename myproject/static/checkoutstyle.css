@@ -54,11 +54,13 @@ section{
 }
 h1{
     font-size:1rem;
+    margin-left:10px;
 }
 .detail-value{
     width:100%;
-    display:flex;
-    justify-content: space-between;
+    display:grid;
+    grid-template-columns: 60% 40%;
+    gap: 20px;
 
 }
 .detail-value p{
@@ -66,7 +68,6 @@ h1{
 }
 .detail-value span{
     display:flex;
-    justify-content:space-around;
     width:150px;
 }
 .total{
@@ -106,11 +107,4 @@ input{
     background-color: #3633AD;
     color:white;
     border-radius:20px;
-}
-
-.btns{
-    display:flex;
-    width:20%; 
-    justify-content:space-around;
-    cursor:pointer;
 }

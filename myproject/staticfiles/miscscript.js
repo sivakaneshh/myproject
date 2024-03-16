@@ -131,3 +131,18 @@ buyBtn.addEventListener('click', () => {
         window.location.href = "checkout.js";
     }
 })
+
+// function make_order(){
+//     var test = 'Ajax test';
+//     var ur = '/main_checkout/';
+//     var orderData = {};
+//     orderData['test'] = test;
+//     $.ajax{
+//         url: ur,
+//         type: 'POST',
+//         data: orderData,
+//         success: fucntion(data){
+//             console.log('Data was sent')
+//         }
+//     }
+// }

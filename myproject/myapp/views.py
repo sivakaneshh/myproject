@@ -3,10 +3,17 @@ from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CreateUserForm
 from django.contrib import messages
+from django.contrib.auth import authenticate, login as auth_login
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth.models import User
-from .utils import send_sms_message
+from django.conf import settings
+from .models import RazorpayOrder
+import razorpay
+from random import randint
 
 def signup(request):
+    
     if request.method == 'POST':
         form = CreateUserForm(request.POST)
         if form.is_valid():
@@ -26,14 +33,12 @@ def signup(request):
     context = {'form': form}
     return render(request, 'signup.html', context)
 
-
 def user_login(request):
+    
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
-        
-        
-        
+         
         # Authenticate using phone number instead of username
         user = authenticate(request, phone_number=phone_number, password=password)
         user = User.objects.filter(email=phone_number).first()
@@ -47,6 +52,7 @@ def user_login(request):
     return render(request, 'login.html')
 
 def addmin_login(request):
+    
     if request.method == 'POST':
         phone_number = request.POST.get('phone_number')
         password = request.POST.get('password')
@@ -77,7 +83,22 @@ def misccanteen(request):
     return render(request, 'misccanteen.html')
 
 def main_checkout(request):
-    return render(request, 'maincheckout.html')
+    
+    order = RazorpayOrder()
+    
+    client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET))
+
+    DATA = {
+        "amount": randint(100,500),
+        "currency": "INR",
+        "receipt": "receipt#1",
+        "payment_capture":"1",
+    }
+    payment = client.order.create(data=DATA)
+    order.rp_order_id = payment['id']
+    print(payment)
+    context = {"payment":payment}
+    return render(request, 'maincheckout.html', context)
 
 def misc_checkout(request):
     return render(request, 'misccheckout.html')

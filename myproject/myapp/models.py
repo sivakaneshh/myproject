@@ -33,6 +33,9 @@ class Order(models.Model):
     status = models.CharField(max_length=50)
     transaction = models.CharField(max_length=50)
     user = models.OneToOneField(UserProfile, on_delete = models.CASCADE)
+    rp_order_id = models.CharField(max_length=100, null = True)
+    rp_payment_id = models.CharField(max_length=100, null = True)
+    rp_payment_signature = models.CharField(max_length=100, null = True)
 
     def get_total(self):
         total = 0
@@ -51,4 +54,6 @@ class OrderUnits(models.Model):
         return self.price * self.quantity
     
 class RazorpayOrder(models.Model):
-    pass
+    rp_order_id = models.CharField(max_length=100, null = True)
+    rp_payment_id = models.CharField(max_length=100, null = True)
+    rp_payment_signature = models.CharField(max_length=100, null = True)

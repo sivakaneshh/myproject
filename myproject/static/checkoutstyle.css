@@ -1,9 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:"poppins",sans-serif;
+    font-family:"Poppins",sans-serif; /* Fixed capitalization for "Poppins" */
 }
 body{
     overflow-x:hidden;
@@ -19,27 +18,26 @@ header{
 section{
     max-width:100vw;
     height:85vh;
+    overflow-y: auto; /* Added overflow-y to allow vertical scrolling if content exceeds height */
 }
 ::-webkit-scrollbar{
     width:10px;
-
 }
 ::-webkit-scrollbar-thumb{
     background-color:#3633AD;
     border-radius:10px;
-
 }
 .container{
     width:100%;
     height:100%;
     display:flex;
-
 }
 .details{
     height:100%;
     width:40%;
     position:relative;
     padding-top:50px;
+    padding-right: 20px; /* Added padding to align content away from scrollbar */
 }
 .form{
     height: 100%;
@@ -50,7 +48,6 @@ section{
     align-items:center; 
     border-left:2px solid #3633AD; 
     margin-left:30px;
-
 }
 h1{
     font-size:1rem;
@@ -59,10 +56,10 @@ h1{
     width:100%;
     display:flex;
     justify-content: space-between;
-
 }
 .detail-value p{
     margin-top:8px;
+    margin-bottom: 0; /* Adjusted margin-bottom to align text properly */
 }
 .detail-value span{
     display:flex;
@@ -70,13 +67,13 @@ h1{
     width:150px;
 }
 .total{
-    display: inline-block;
     position:absolute;
     bottom:20px;
     right:20px;
-}       
+}
 .patient-details{
     width:50vw;
+    max-width: 400px; /* Set max-width to prevent form from extending too wide */
     height:400px;
     display: flex;
     flex-direction: column;
@@ -107,8 +104,6 @@ input{
     color:white;
     border-radius:20px;
 }
-
-
 .btns{
     display:flex;
     width:20%; 

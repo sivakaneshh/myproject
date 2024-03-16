@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as auth_login, logout
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_protect
 from .forms import CreateUserForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login
@@ -76,6 +78,7 @@ def maincanteen(request):
 def misccanteen(request):
     return render(request, 'misccanteen.html')
 
+@login_required
 def main_checkout(request):
     
     order = RazorpayOrder()
@@ -83,7 +86,7 @@ def main_checkout(request):
     client = razorpay.Client(auth=(settings.RAZORPAY_API_KEY, settings.RAZORPAY_API_SECRET))
 
     DATA = {
-        "amount": randint(100,500),
+        "amount": randint(100,500) * 100,
         "currency": "INR",
         "receipt": "receipt#1",
         "payment_capture":"1",
@@ -97,6 +100,7 @@ def main_checkout(request):
 def misc_checkout(request):
     return render(request, 'misccheckout.html')
 
+@csrf_protect
 def conformation(request):
     return render(request,'conformation.html')
 

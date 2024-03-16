@@ -13,8 +13,8 @@
         <img src="image/verification.jpg" alt="verification">
     </div>
     <div class="content">
-        <p>Hey username..!,Your order is placed successfully and delivered to your room within 10 mintues</p>
-        
+        {% csrf_token %}
+        <p>Your order is placed successfully and will be delivered to your room soon!</p>
     </div>
 </body>
 </html>

@@ -50,12 +50,14 @@ section{
     margin-left:30px;
 }
 h1{
+    margin-left:10px;
     font-size:1rem;
 }
 .detail-value{
     width:100%;
-    display:flex;
-    justify-content: space-between;
+    display:grid;
+    grid-template-columns: 60% 40%;
+    gap:20px;
 }
 .detail-value p{
     margin-top:8px;
@@ -63,7 +65,6 @@ h1{
 }
 .detail-value span{
     display:flex;
-    justify-content:space-around;
     width:150px;
 }
 .total{
